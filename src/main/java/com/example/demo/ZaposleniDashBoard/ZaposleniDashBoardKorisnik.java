@@ -19,7 +19,8 @@ public class ZaposleniDashBoardKorisnik extends JFrame {
 
     public  ZaposleniDashBoardKorisnik(){
         setContentPane(JPanel);
-
+        kreirajKnjiguButton.setEnabled(false);
+        kreirajKorisnikaButton.setEnabled(false);
         setTitle("Zaposleni");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
 
@@ -85,11 +86,10 @@ public class ZaposleniDashBoardKorisnik extends JFrame {
         try {
             Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/bibl", "root", "15082003");
             String columnName = table1.getColumnName(column);
-            Object idValue = table1.getValueAt(row, 0); // This should be the primary key
+            Object idValue = table1.getValueAt(row, 0);
             String sql = "UPDATE korisnik SET " + columnName + " = ? WHERE korisnicko_ime = ?";
 
             PreparedStatement pstmt = conn.prepareStatement(sql);
-            // Depending on the data type of the column, you may need to use different setter methods
             pstmt.setObject(1, newData);
             pstmt.setObject(2, idValue);
             pstmt.executeUpdate();

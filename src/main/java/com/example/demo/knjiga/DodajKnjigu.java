@@ -21,7 +21,7 @@ public class DodajKnjigu extends JFrame {
     private JButton back;
 
 
-    private KnjigaService knjigaService; // Spring-managed service
+    private KnjigaService knjigaService;
 
         public DodajKnjigu(KnjigaService service) {
             this.knjigaService = service;
@@ -37,12 +37,13 @@ public class DodajKnjigu extends JFrame {
         }
 
         private void initComponents() {
-            // initialize and set up your components
+
 
             dodaj_knjigu.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     String naziv = tfnaziv_knjige.getText();
+
                     Integer br_dostupnih = Integer.valueOf(tfmbroj_dostupnih.getText());
                     boolean dostupnost = br_dostupnih > 0;
 

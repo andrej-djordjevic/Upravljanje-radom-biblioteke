@@ -18,8 +18,8 @@ public class KorisnikDashBoard extends JFrame {
     private javax.swing.JPanel JPanel;
 
     public KorisnikDashBoard() {
-        initComponents(); // Call initComponents first
-        Connect(); // Then connect to the database
+        initComponents();
+        Connect();
 
         nazad.addActionListener(new ActionListener() {
             @Override
@@ -82,7 +82,7 @@ public class KorisnikDashBoard extends JFrame {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             con = DriverManager.getConnection("jdbc:mysql://localhost:3306/bibl", "root", "15082003");
-//            JOptionPane.showMessageDialog(null, "Connected to Database");
+
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, "Failed to connect to Database");
             ex.printStackTrace();
@@ -91,18 +91,17 @@ public class KorisnikDashBoard extends JFrame {
 
     private void fetchBooks() {
         try {
-            pst = con.prepareStatement("SELECT * FROM bibl.knjiga");  // Use the correct table name
+            pst = con.prepareStatement("SELECT * FROM bibl.knjiga");
             ResultSet rs = pst.executeQuery();
 
-            // The column names should match the ones in the database
+
             String[] columnNames = {"idKnjige", "naziv", "broj_dostupnih_knjiga", "dostupnost"};
 
             DefaultTableModel model = (DefaultTableModel) table1.getModel();
-            model.setRowCount(0);  // Clear the model before adding new rows
+
             model.setColumnIdentifiers(columnNames);
 
             while (rs.next()) {
-                // Use the correct method to fetch the data based on the data type
                 model.addRow(new Object[]{
                         rs.getInt("idKnjige"),
                         rs.getString("naziv"),

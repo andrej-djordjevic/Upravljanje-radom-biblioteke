@@ -29,7 +29,8 @@ public class ZaposleniDashBoardKnjige extends JFrame {
 
     public ZaposleniDashBoardKnjige() {
         setContentPane(JPanel);
-
+kreirKnjigu.setEnabled(false);
+kreirKorisnika.setEnabled(false);
         setTitle("Zaposleni");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
 
@@ -88,18 +89,18 @@ public class ZaposleniDashBoardKnjige extends JFrame {
             int column = e.getColumn();
             if (column != TableModelEvent.ALL_COLUMNS) {
                 Object data = model.getValueAt(row, column);
-                // You'll then want to call a method to update the database
+
                 updateDatabase(row, column, data);
             }
         });
 
         try {
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/bibl", "root", "15082003"); // Replace with your database details
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/bibl", "root", "15082003");
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery("SELECT * FROM knjiga");
 
             while (rs.next()) {
-                model.addRow(new Object[]{rs.getString(1), rs.getString(2),rs.getInt(3),rs.getString(4)}); // Adjust according to the actual number of columns and types
+                model.addRow(new Object[]{rs.getString(1), rs.getString(2),rs.getInt(3),rs.getString(4)});
             }
             rs.close();
             stmt.close();
@@ -111,13 +112,13 @@ public class ZaposleniDashBoardKnjige extends JFrame {
     private void updateDatabase(int row, int column, Object newData) {
         try {
             Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/bibl", "root", "15082003");
-            // Replace with your actual table column names and primary key column name
-            String columnName = table1.getColumnName(column); // Implement this method based on your table structure
-            Object idValue = table1.getValueAt(row, 0); // Assuming the first column is the ID
+
+            String columnName = table1.getColumnName(column);
+            Object idValue = table1.getValueAt(row, 0);
             String sql = "UPDATE knjiga SET " + columnName + " = ? WHERE idKnjige = ?";
 
             PreparedStatement pstmt = conn.prepareStatement(sql);
-            // Depending on the data type of the column, you may need to use different setter methods
+
             pstmt.setObject(1, newData);
             pstmt.setObject(2, idValue);
             pstmt.executeUpdate();

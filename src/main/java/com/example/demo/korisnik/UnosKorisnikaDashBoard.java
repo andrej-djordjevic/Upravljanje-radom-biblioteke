@@ -41,7 +41,7 @@ public class UnosKorisnikaDashBoard extends JFrame {
     }
 
     private void initComponents() {
-        // initialize and set up your components
+
 
         klikniButton.addActionListener(new ActionListener() {
             @Override

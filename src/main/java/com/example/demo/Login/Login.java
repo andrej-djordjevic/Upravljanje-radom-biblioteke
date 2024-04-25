@@ -12,25 +12,25 @@ import java.awt.event.ActionListener;
 public class Login extends JFrame {
     private JButton zaposleni;
     private JButton korisnik;
-    private JPanel JPanel; // Renamed for clarity
+    private JPanel JPanel;
     private JLabel labela;
 
     public Login() {
-        // Initialize panel and components
-        JPanel = new JPanel(); // Instantiate JPanel correctly
+
+        JPanel = new JPanel();
         zaposleni = new JButton("Zaposleni");
         korisnik = new JButton("Korisnik");
 
 
-        // Adding components to panel
+
         JPanel.add(labela);
         JPanel.add(zaposleni);
         JPanel.add(korisnik);
 
-        // Setting layout manager for JPanel (optional here as FlowLayout is default)
+
         JPanel.setLayout(new java.awt.FlowLayout());
 
-        // Set panel to frame
+
         setContentPane(JPanel);
 
         // Add action listeners to buttons
@@ -54,14 +54,14 @@ public class Login extends JFrame {
             }
         });
 
-        // Setup JFrame properties
+
         setTitle("Login");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(300, 100);
-        setLocationRelativeTo(null); // Center the window
+        setLocationRelativeTo(null);
         setResizable(false);
 
-        // Make frame visible after all components added
+
         setVisible(true);
     }
 

@@ -25,9 +25,7 @@ public class UnesiKorisnika extends JFrame {
     @Bean
     public CommandLineRunner run(){
         return (args->{
-          //  korisnikService.addKorisnikToDatabase("KorIme7", "Sifra3", "Ime3", "Email3", "Rola3", "Vrsta3");
-            //korisnikService.addKorisnikToDatabase("KorIme4", "Sifra4", "Ime4", "Email4", "Rola4", "Vrsta4");
-            // etc...
+
         });
     }
 }

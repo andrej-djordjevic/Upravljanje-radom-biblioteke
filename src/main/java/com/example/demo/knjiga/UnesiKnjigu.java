@@ -25,9 +25,7 @@ public class UnesiKnjigu extends JFrame{
     @Bean
     public CommandLineRunner run() {
         return (args -> {
-            // Example usage, you can modify or remove these calls
-           // knjigaService.addKnjigaToDatabase("Knjiga1", 10, true);
-            //knjigaService.addKnjigaToDatabase("Knjiga2", 0, false);
+
         });
     }
 }
